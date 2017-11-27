@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
+#include <sys/wait.h>
 #include "tokenizer.h"
 
 char ** parse_args(char* line) {
@@ -16,11 +17,16 @@ char ** parse_args(char* line) {
 }
 
 void exec_in_fork(char* command) {
+    char** args = parse_args(command);
+    if (strcmp("exit", args[0]) == 0) {
+        exit(0);
+    }
     int f = fork();
     if (f) {
-        wait();
+        int status;
+        wait(&status);
     } else {
-        char** args = parse_args(command);
         execvp(args[0], args);
+        exit(0);
     }
 }

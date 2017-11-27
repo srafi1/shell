@@ -17,9 +17,6 @@ int main() {
         fgets(input, 256, stdin);
         *strchr(input, '\n') = 0; //change \n to null in input
         //printf("input: %s\n", input);
-        if (strncmp("exit ", input, 5) == 0) {
-            exit(0);
-        }
         exec_in_fork(input);
     }
 
