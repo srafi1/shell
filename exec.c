@@ -20,6 +20,7 @@ void exec_in_fork(char* command) {
         free(args);
     } else {
         execvp(args[0], args);
+        printf("That is not a valid command\n");
         exit(0);
     }
 }

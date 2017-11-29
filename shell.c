@@ -14,7 +14,7 @@ int main() {
         fgets(input, 256, stdin);
         *strchr(input, '\n') = 0; //change \n to null in input
         //printf("input: *%s*\n", input);
-        strip_extra_spaces(input);
+        strip_extra_blankspace(input);
         //printf("new input: *%s*\n", input);
         exec_all_in_line(input);
     }

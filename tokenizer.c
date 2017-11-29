@@ -27,8 +27,18 @@ void shift_string_back_at(char* original) {
     }
 }
 
-void strip_extra_spaces(char* original) {
-    char* loc = strstr(original, "  ");
+void strip_extra_blankspace(char* original) {
+    char* loc = strstr(original, "\t");
+    while (loc) {
+        shift_string_back_at(loc);
+        loc = strstr(original, "\t");
+    }
+    loc = strstr(original, "\n");
+    while (loc) {
+        shift_string_back_at(loc);
+        loc = strstr(original, "\n");
+    }
+    loc = strstr(original, "  ");
     while (loc) {
         shift_string_back_at(loc);
         loc = strstr(original, "  ");
