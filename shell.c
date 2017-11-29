@@ -6,13 +6,10 @@
 #include "exec.h"
 
 int main() {
-    char user[256];
-    getlogin_r(user, sizeof(user));
     while (1) {
         char cwd[256];
         getcwd(cwd, sizeof(cwd));
-        char* ending_cwd = strrchr(cwd, '/') + 1;
-        printf("%s:%s$ ", user, ending_cwd);
+        printf("%s$ ", cwd);
         char input[256];
         fgets(input, 256, stdin);
         *strchr(input, '\n') = 0; //change \n to null in input
