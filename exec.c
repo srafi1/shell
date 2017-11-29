@@ -23,11 +23,8 @@ void exec_in_fork(char* command) {
     }
 }
 
-void exec_all(char* line) {
+void exec_all_in_line(char* line) {
     while (line) {
-        command = strsep(&line, " ");
-        index += 1;
+        exec_in_fork(strsep(&line, ";"));
     }
-    // calloc makes sure the last thing will already be NULL
-    return args;
 }
