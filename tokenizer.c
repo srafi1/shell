@@ -15,6 +15,31 @@ int count_char(char c, char* string) {
     return counter;
 }
 
+void shift_array_back_at(char** original, int length) {
+    for (int i = 0; i < length; i++) {
+        original[i] = original[i + 1];
+    }
+}
+
+void shift_string_back_at(char* original) {
+    for (int i = 0; i < strlen(original) + 1; i++) {
+        original[i] = original[i + 1];
+    }
+}
+
+void strip_extra_spaces(char* original) {
+    char* loc = strstr(original, "  ");
+    while (loc) {
+        shift_string_back_at(loc);
+        loc = strstr(original, "  ");
+    }
+    loc = strstr(original, " ;");
+    while (loc) {
+        shift_string_back_at(loc);
+        loc = strstr(original, " ;");
+    }
+}
+
 void printarr(char** args) {
     int i;
     printf("[");
@@ -26,12 +51,20 @@ void printarr(char** args) {
 }
 
 char ** parse_args(char* line) {
-    char ** args = (char **) calloc(count_char(' ', line) + 2, sizeof(char*));
+    int len = count_char(' ', line) + 2;
+    char ** args = (char **) calloc(len, sizeof(char*));
     int index = 0;
     while (line) {
         args[index] = strsep(&line, " ");
         index += 1;
     }
     // calloc makes sure the last thing will already be NULL
+    //printf("len: %d", len);
+    //printarr(args);
+    while (len > 2 && !args[0][0]) {
+        shift_array_back_at(args, len);
+        len--;
+    }
     return args;
 }
+

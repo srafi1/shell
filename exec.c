@@ -17,6 +17,7 @@ void exec_in_fork(char* command) {
     if (f) {
         int status;
         wait(&status);
+        free(args);
     } else {
         execvp(args[0], args);
         exit(0);
