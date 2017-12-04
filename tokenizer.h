@@ -4,3 +4,8 @@ char ** parse_args(char* line);
 void strip_extra_blankspace(char* original);
 void shift_array_back_at(char** original, int length);
 void shift_string_back_at(char* original);
+void strip_by(char* original, char* delete_dis);
+char* get_stdout(char* input);
+char* get_stdin(char* input);
+void delete_stdout(char* input);
+void delete_stdin(char* input);
