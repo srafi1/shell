@@ -104,7 +104,7 @@ gets the portion of the given input that should used for stdin
 args:  
     input: string to look through  
 return:  
-    filename to for stdin or NULL if not provided  
+    filename for stdin or NULL if not provided  
 */  
   
 /* char* get_stdout  
@@ -113,7 +113,7 @@ gets the portion of the given input that should used for stdout
 args:  
     input: string to look through  
 return:  
-    filename to for stdout or NULL if not provided  
+    filename for stdout or NULL if not provided  
 */  
   
 /* void delete_stdin  
